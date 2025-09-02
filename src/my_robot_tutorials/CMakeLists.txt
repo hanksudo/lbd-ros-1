@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  rospy_tutorials
 )
 
 ## System dependencies are found with CMake's conventions
@@ -136,6 +137,8 @@ include_directories(
 add_executable(my_first_node src/my_first_node.cpp)
 add_executable(cplusplus_publisher_node src/cplusplus_publisher.cpp)
 add_executable(cplusplus_subscriber_node src/cplusplus_subscriber.cpp)
+add_executable(add_two_ints_server src/add_two_ints_server.cpp)
+add_executable(add_two_ints_client src/add_two_ints_client.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -151,6 +154,8 @@ add_executable(cplusplus_subscriber_node src/cplusplus_subscriber.cpp)
 target_link_libraries(my_first_node ${catkin_LIBRARIES})
 target_link_libraries(cplusplus_publisher_node ${catkin_LIBRARIES})
 target_link_libraries(cplusplus_subscriber_node ${catkin_LIBRARIES})
+target_link_libraries(add_two_ints_server ${catkin_LIBRARIES})
+target_link_libraries(add_two_ints_client ${catkin_LIBRARIES})
 
 #############
 ## Install ##
