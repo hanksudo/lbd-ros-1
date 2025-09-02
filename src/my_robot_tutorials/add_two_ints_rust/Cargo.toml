@@ -1,0 +1,19 @@
+[package]
+name = "add_two_ints_rust"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "add_two_ints_server"
+path = "src/add_two_ints_server.rs"
+
+[[bin]]
+name = "add_two_ints_client"
+path = "src/add_two_ints_client.rs"
+
+[dependencies]
+rosrust = "0.9"
+rosrust_msg = "0.1"
+env_logger = "0.10"
+log = "0.4.27"
+
