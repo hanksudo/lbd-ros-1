@@ -1,20 +1,11 @@
-use rosrust;
-use std::time;
 use env_logger::Builder;
 use log::info;
+use rosrust;
 use std::io::Write;
+use std::time;
 
 fn main() {
-    Builder::new()
-        .format(|buf, record| {
-            let timestamp = std::time::SystemTime::now()
-                .duration_since(std::time::UNIX_EPOCH)
-                .unwrap()
-                .as_secs_f64();
-            writeln!(buf, "[INFO] [{:.9}]: {}", timestamp, record.args())
-        })
-        .filter_level(log::LevelFilter::Info)
-        .init(); 
+    setup_logger();
     rosrust::init("add_two_ints_client");
 
     rosrust::wait_for_service("/add_two_ints", Some(time::Duration::from_secs(10)))
@@ -30,4 +21,17 @@ fn main() {
         }
         Err(e) => info!("Failed to call service: {:?}", e),
     }
+}
+
+fn setup_logger() {
+    Builder::new()
+        .format(|buf, record| {
+            let timestamp = std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap()
+                .as_secs_f64();
+            writeln!(buf, "[INFO] [{:.9}]: {}", timestamp, record.args())
+        })
+        .filter_level(log::LevelFilter::Info)
+        .init();
 }
