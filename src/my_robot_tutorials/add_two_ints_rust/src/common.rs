@@ -1,7 +1,7 @@
 use env_logger::Builder;
 use std::io::Write;
 
-fn setup_logger() {
+pub fn setup_logger() {
     Builder::new()
         .format(|buf, record| {
             let timestamp = std::time::SystemTime::now()

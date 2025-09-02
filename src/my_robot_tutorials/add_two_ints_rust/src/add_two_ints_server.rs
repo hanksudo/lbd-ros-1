@@ -1,8 +1,8 @@
-use lib;
+mod common;
 use rosrust;
 
 fn main() {
-    lib::setup_logger();
+    common::setup_logger();
 
     rosrust::init("add_two_ints_server");
     let _service = rosrust::service::<rosrust_msg::rospy_tutorials::AddTwoInts, _>(

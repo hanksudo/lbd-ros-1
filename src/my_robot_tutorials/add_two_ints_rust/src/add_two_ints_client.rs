@@ -1,10 +1,10 @@
-use lib;
+mod common;
 use log::info;
 use rosrust;
 use std::time;
 
 fn main() {
-    lib::setup_logger();
+    common::setup_logger();
     rosrust::init("add_two_ints_client");
 
     rosrust::wait_for_service("/add_two_ints", Some(time::Duration::from_secs(10)))
