@@ -44,3 +44,11 @@ rosrun my_robot_tutorials cplusplus_subscriber_node
 rosrun my_robot_tutorials first_publisher.py
 rosrun my_robot_tutorials first_subscriber.py
 ```
+
+## Number counter
+
+```bash
+# Python
+rosrun my_robot_tutorials number_counter.py
+rosrun my_robot_tutorials number_publisher.py
+```
