@@ -54,8 +54,8 @@ rosrun my_robot_tutorials number_publisher.py
 
 # Rust
 cd src/my_robot_tutorials/number_tools_rust
-cargo run --bin number_publisher_rust
-cargo run --bin number_counter_rust
+cargo run --bin number_publisher
+cargo run --bin number_counter
 
 # check result
 rostopic echo /number_count
