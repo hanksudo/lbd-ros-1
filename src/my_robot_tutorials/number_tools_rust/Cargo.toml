@@ -4,11 +4,11 @@ version = "0.1.0"
 edition = "2024"
 
 [[bin]]
-name = "number_publisher_rust"
+name = "number_publisher"
 path = "src/bin/number_publisher.rs"
 
 [[bin]]
-name = "number_counter_rust"
+name = "number_counter"
 path = "src/bin/number_counter.rs"
 
 [dependencies]

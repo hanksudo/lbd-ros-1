@@ -7,7 +7,7 @@ use log::info;
 fn main() {
     env_logger::init();
 
-    rosrust::init("number_counter_rust");
+    rosrust::init("number_counter");
 
     let counter = Arc::new(AtomicUsize::new(0));
     let c = counter.clone();
@@ -18,6 +18,6 @@ fn main() {
     })
     .expect("Failed to create subscriber");
 
-    info!("number_counter_rust ready");
+    info!("number_counter ready");
     rosrust::spin();
 }
