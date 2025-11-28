@@ -1,0 +1,18 @@
+[package]
+name = "number_tools_rust"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "number_publisher_rust"
+path = "src/bin/number_publisher.rs"
+
+[[bin]]
+name = "number_counter_rust"
+path = "src/bin/number_counter.rs"
+
+[dependencies]
+rosrust = "0.9"
+rosrust_msg = "0.1"
+env_logger = "0.10"
+log = "0.4.27"
