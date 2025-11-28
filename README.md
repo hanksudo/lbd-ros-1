@@ -51,4 +51,6 @@ rosrun my_robot_tutorials first_subscriber.py
 # Python
 rosrun my_robot_tutorials number_counter.py
 rosrun my_robot_tutorials number_publisher.py
+
+rostopic echo /number_count
 ```
