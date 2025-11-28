@@ -4,7 +4,7 @@ import rospy
 from std_msgs.msg import Int64
 
 if __name__ == "__main__":
-    rospy.init_node("number_publisher")
+    rospy.init_node("number_publisher", anonymous=True)
 
     pub = rospy.Publisher("/number", Int64, queue_size=10)
 
