@@ -63,3 +63,13 @@ rostopic echo /number_count
 # reset number
 rosservice call /reset_counter "data: true"
 ```
+
+## Custom message
+
+```bash
+# Need to source again if anything add to catkin package
+source devel/setup.bash
+
+# Python
+rosrun rosrun my_robot_tutorials hw_status_publisher.py
+```
