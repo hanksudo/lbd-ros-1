@@ -72,4 +72,7 @@ source devel/setup.bash
 
 # Python
 rosrun rosrun my_robot_tutorials hw_status_publisher.py
+
+rosmsg show my_robot_msgs/HardwareStatus
+rossrv show my_robot_msgs/ComputerDiskArea
 ```
