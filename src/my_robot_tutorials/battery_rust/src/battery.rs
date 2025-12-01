@@ -3,49 +3,71 @@ use std::time::Duration;
 
 use battery_rust::msg::my_robot_msgs::{SetLed, SetLedReq};
 
+#[derive(Debug, Clone, Copy)]
+enum BatteryState {
+    Empty,
+    Full,
+}
+
+impl BatteryState {
+    fn led_state(self) -> i64 {
+        match self {
+            BatteryState::Empty => 1, // LED on
+            BatteryState::Full => 0,  // LED off
+        }
+    }
+
+    fn message(self) -> &'static str {
+        match self {
+            BatteryState::Empty => "the battery is empty !",
+            BatteryState::Full => "the battery is now full",
+        }
+    }
+}
+
 fn main() {
-    // Initialize logger and node
     env_logger::Builder::from_default_env()
         .filter_level(log::LevelFilter::Info)
         .init();
     
     rosrust::init("battery");
 
+    run_battery_simulation();
+}
+
+fn run_battery_simulation() {
     while rosrust::is_ok() {
         rosrust::sleep(Duration::from_secs(7).into());
-        rosrust::ros_info!("the battery is empty !");
-        set_led(true); 
+        update_battery_state(BatteryState::Empty); 
 
         rosrust::sleep(Duration::from_secs(3).into());
-        rosrust::ros_info!("the battery is now full");
-        set_led(false);
+        update_battery_state(BatteryState::Full); 
     }
 }
 
-/// Helper function to call the service
-fn set_led(is_empty: bool) {
-    let service_name = "/set_led";
+fn update_battery_state(state: BatteryState) {
+    rosrust::ros_info!("{}", state.message());
+    set_led(state);
+}
 
-    if let Err(_err) = rosrust::wait_for_service(service_name, Some(Duration::from_secs(2))) {
+fn set_led(battery_state: BatteryState) {
+    let service_name: &str = "/set_led";
+
+    if let Err(_err) = rosrust::wait_for_service(service_name, Some(Duration::from_secs(10))) {
         rosrust::ros_err!("Service {} not found/ready", service_name);
         return;
     }
 
-    // 2. Create the client
     let client = rosrust::client::<SetLed>(service_name).unwrap();
-
-    // 3. Map logic: Empty = 1 (On), Full = 0 (Off)
-    let state_val = if is_empty { 1 } else { 0 };
 
     let request = SetLedReq {
         led_number: 1,
-        state: state_val,
+        state: battery_state.led_state(),
     };
 
-    // 4. Send the request
     match client.req(&request) {
         Ok(res) => {
-            rosrust::ros_info!("Set led success flag : {}", res.unwrap().success);
+            rosrust::ros_info!("Set LED success : {}", res.unwrap().success);
         }
         Err(err) => {
             rosrust::ros_err!("Service call failed: {}", err);
