@@ -95,3 +95,14 @@ rosrun rosrun my_robot_tutorials battery.py
 cargo run --bin led_panel
 cargo run --bin battery
 ```
+
+## Load param
+
+```bash
+rosparam list
+rosparam set /robot_name "my_robot"
+rosparam get /robot_name "my_robot"
+
+# Python
+rosrun rosrun my_robot_tutorials load_param.py
+```
