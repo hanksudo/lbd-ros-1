@@ -54,9 +54,12 @@ rosrun my_robot_tutorials number_publisher.py
 
 # Rust
 cd src/my_robot_tutorials/number_tools_rust
-cargo run --bin number_publisher
 cargo run --bin number_counter
+cargo run --bin number_publisher
 
 # check result
 rostopic echo /number_count
+
+# reset number
+rosservice call /reset_counter "data: true"
 ```
