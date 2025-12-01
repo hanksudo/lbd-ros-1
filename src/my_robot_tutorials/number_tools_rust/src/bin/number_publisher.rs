@@ -14,20 +14,18 @@ fn main() {
     let publisher = rosrust::publish::<Int64>("/number", 10).expect("Failed to create publisher");
     let rate = rosrust::rate(1.0);
 
-    let mut value: i64 = 0;
     info!("number_publisher started");
 
     while rosrust::is_ok() {
         let mut msg = Int64::default();
-        msg.data = value;
+        msg.data = 2;
+        let published_value = msg.data;
 
         if let Err(e) = publisher.send(msg) {
             error!("Failed to publish: {:?}", e);
         } else {
-            info!("Published: {}", value);
+            info!("Published: {}", published_value);
         }
-
-        value = value.wrapping_add(1);
         rate.sleep();
     }
 }
