@@ -76,3 +76,16 @@ rosrun rosrun my_robot_tutorials hw_status_publisher.py
 rosmsg show my_robot_msgs/HardwareStatus
 rossrv show my_robot_msgs/ComputerDiskArea
 ```
+
+## Led panel (custom srv)
+
+```bash
+# Python
+rosrun rosrun my_robot_tutorials led_panel.py
+
+rosservice call /set_led "led_number: 2
+state: 1"
+
+rosservice call /set_led "led_number: 1
+state: 1"
+```
