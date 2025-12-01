@@ -90,4 +90,8 @@ rosservice call /set_led "led_number: 1
 state: 1"
 
 rosrun rosrun my_robot_tutorials battery.py
+
+# Rust
+cargo run --bin led_panel
+cargo run --bin battery
 ```
