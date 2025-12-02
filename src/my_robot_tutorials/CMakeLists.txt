@@ -135,7 +135,8 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(my_first_node src/my_first_node.cpp)
+add_executable(my_first_cpp_node src/my_first_cpp_node.cpp)
+add_executable(my_first_cpp_node_params src/my_first_cpp_node_params.cpp)
 add_executable(cplusplus_publisher_node src/cplusplus_publisher.cpp)
 add_executable(cplusplus_subscriber_node src/cplusplus_subscriber.cpp)
 add_executable(add_two_ints_server src/add_two_ints_server.cpp)
@@ -152,7 +153,8 @@ add_executable(add_two_ints_client src/add_two_ints_client.cpp)
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(my_first_node ${catkin_LIBRARIES})
+target_link_libraries(my_first_cpp_node ${catkin_LIBRARIES})
+target_link_libraries(my_first_cpp_node_params ${catkin_LIBRARIES})
 target_link_libraries(cplusplus_publisher_node ${catkin_LIBRARIES})
 target_link_libraries(cplusplus_subscriber_node ${catkin_LIBRARIES})
 target_link_libraries(add_two_ints_server ${catkin_LIBRARIES})
