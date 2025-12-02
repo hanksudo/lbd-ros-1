@@ -21,7 +21,7 @@ fn main() {
     let rate = rosrust::rate(10.0);
 
     while rosrust::is_ok() {
-        info!("Hello");
+        info!("Hello from Rust node");
         rate.sleep();
     }
 }

@@ -106,3 +106,9 @@ rosparam get /robot_name "my_robot"
 # Python
 rosrun rosrun my_robot_tutorials load_param.py
 ```
+
+## Launch file
+
+```bash
+roslaunch my_robot_bringup number_app.launch
+```
