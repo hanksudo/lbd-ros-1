@@ -14,7 +14,7 @@ fn main() {
     let publisher = rosrust::publish::<Int64>("/number", 10).expect("Failed to create publisher");
     let rate = rosrust::rate(1.0);
 
-    info!("number_publisher started");
+    info!("number_publisher (rust) started");
 
     while rosrust::is_ok() {
         let mut msg = Int64::default();

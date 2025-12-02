@@ -8,6 +8,10 @@ name = "number_publisher"
 path = "src/bin/number_publisher.rs"
 
 [[bin]]
+name = "number_publisher_params"
+path = "src/bin/number_publisher_params.rs"
+
+[[bin]]
 name = "number_counter"
 path = "src/bin/number_counter.rs"
 
